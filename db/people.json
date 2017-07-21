@@ -1,0 +1,19 @@
+{
+  "people": [
+    {
+      "name": "Wojtek ",
+      "age": "12",
+      "id": 4
+    },
+    {
+      "name": "Jarek Guzek",
+      "age": "45",
+      "id": 5
+    },
+    {
+      "name": "Krystyna Bąk",
+      "age": "53",
+      "id": 6
+    }
+  ]
+}
