@@ -1,19 +1,19 @@
 {
   "people": [
     {
-      "name": "Wojtek ",
-      "age": "12",
-      "id": 4
-    },
-    {
-      "name": "Jarek Guzek",
-      "age": "45",
-      "id": 5
-    },
-    {
       "name": "Krystyna Bąk",
       "age": "53",
       "id": 6
+    },
+    {
+      "name": "Honorata Pieniążek",
+      "age": "34",
+      "id": 7
+    },
+    {
+      "name": "Franek Kimono",
+      "age": "33",
+      "id": 8
     }
   ]
 }

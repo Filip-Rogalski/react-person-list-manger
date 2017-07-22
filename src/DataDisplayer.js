@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Row, Col, ButtonGroup, Button } from 'react-bootstrap';
 
 class DataDisplayer extends Component {
     constructor(){
@@ -7,7 +8,7 @@ class DataDisplayer extends Component {
     }
     
     deletePerson(e) {
-        let removedItemId = parseInt(e.target.parentElement.dataset.id, 10);
+        let removedItemId = parseInt(e.target.parentElement.parentElement.parentElement.dataset.id, 10);
         fetch('http://localhost:3000/people/' + removedItemId, {
             method: 'DELETE'
         });
@@ -15,22 +16,22 @@ class DataDisplayer extends Component {
     
     render(){
         return (
-            <div>
-                <div className="row">
-                    <ul>
-                        {this.props.personsData.map(item => (
-                            <li key={item.id} data-id={item.id} data-age={item.age} data-name={item.name}>
-                                <span>{item.name},</span>
-                                <span> Age: {item.age}</span>
-                            <button onClick={this.deletePerson} className="itemBtn deleteBtn">Delete</button>
-                            <button onClick={this.props.editModeOn} className="itemBtn editBtn">Edit</button>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+            <div className="displayedData">
+                {this.props.personsData.map(item => (
+                    <Row key={item.id} data-id={item.id} data-age={item.age} data-name={item.name}>
+                        <Col xs={7} md={10}>
+                            <span>{item.name},</span>
+                            <span> Age: {item.age}</span>
+                        </Col>
+                        <Col xs={5} md={2}>
+                            <ButtonGroup bsStyle="default" bsSize="xsmall">
+                                <Button bsStyle="default" onClick={this.deletePerson} disabled={!this.props.editMode}>Delete</Button>
+                                <Button onClick={this.props.editModeOn}>Edit</Button>
+                            </ButtonGroup>
+                        </Col>
+                    </Row>
+                ))}
             </div>
-
-
         )
     }
 }

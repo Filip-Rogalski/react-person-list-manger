@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
+import { Button, Col, Row, FormGroup } from 'react-bootstrap';
+
 
 class DataController extends Component {
     constructor(){
         super();
         this.addPerson = this.addPerson.bind(this);
-        this.editPerson = this.editPerson.bind(this);   
     }
     
     addPerson(e){
         e.preventDefault();
-        let nameInput = e.target.parentElement.firstChild,
-            ageInput = e.target.parentElement.firstChild.nextSibling;
+        let nameInput = e.target.parentElement.parentElement.firstChild.firstChild,
+            ageInput = e.target.parentElement.parentElement.firstChild.nextSibling.firstChild;
         let newPerson = {
             name: nameInput.value,
             age: ageInput.value
@@ -23,20 +24,18 @@ class DataController extends Component {
             body: JSON.stringify( newPerson )
         })
     }
-    
-    editPerson(e) {
         
-    }
-    
     render(){
         return (
-            <div className="row">
+            <Row>
                 <form>
-                    <input type="text" id="name" placeholder="Insert name (first_last)"/>
-                    <input type="text" id="age" placeholder="Insert Age"/>
-            {this.props.editMode === 'false' ? (<button onClick={this.addPerson}>Add</button>) : (<button onClick={this.props.submitEditHandler/*this.editPerson*/}>Confirm</button>)}
+                    <Col xs={12} md={5}><input type="text" id="name" placeholder="Insert name (first_last)"/></Col>
+                    <Col xs={9} md={5}><input type="text" id="age" placeholder="Insert Age"/></Col>
+                    <Col xs={3} md={2}>
+                        {this.props.editMode === 'false' ? (<Button bsStyle="default" bsSize="small" onClick={this.addPerson} block>Add</Button>) : (<Button bsStyle="default" bsSize="small" onClick={this.props.submitEditHandler}>Confirm</Button>)}
+                    </Col>
                 </form>
-            </div>
+            </Row>
         )
     }
 }

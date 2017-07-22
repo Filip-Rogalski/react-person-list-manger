@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { Grid, Row, Col, ButtonGroup, Button } from 'react-bootstrap';
 import DataController from './DataController';
 import DataDisplayer from './DataDisplayer';
 
@@ -8,8 +9,28 @@ import './index.css';
 class Header extends Component {
     render(){
         return(
-            <div className="row">
+            <Row>
+                <Col xs={12}>
                     <h1>Manage person list</h1>
+                </Col>
+            </Row>
+        )
+    }
+}
+
+class DisplayController extends Component {
+    render(){
+        return(
+            <div className="displayController">
+                <Row>
+                    <Col xs={12}>
+                        <ButtonGroup bsSize="small">
+                            <Button onClick={this.props.sortPersonsByAge}>Sort Age</Button>
+                            <Button onClick={this.props.sortPersonsByName}>Sort Name</Button>
+                            <Button onClick={this.props.updateData}>Update</Button>
+                        </ButtonGroup>
+                    </Col>
+                </Row>
             </div>
         )
     }
@@ -38,20 +59,7 @@ class App extends Component {
             });
         });
     }
-    
-    /* Refresh data after update */
-    /*
-    componentDidUpdate(){
-        fetch('http://localhost:3000/people').then(resp => {
-            return resp.json();
-        }).then(data => {
-            this.setState({
-                persons: data
-            });
-        }).then();
-    }
-    */
-    
+   
     updateData(){
          fetch('http://localhost:3000/people?_sort=' + this.state.sorting + '&ord=asc').then(resp => {
             return resp.json();
@@ -68,7 +76,7 @@ class App extends Component {
     }
     
     editModeOn(e) {
-        this.setState({editMode: 'true', editedItemId: parseInt(e.target.parentElement.dataset.id, 10)});
+        this.setState({editMode: 'true', editedItemId: parseInt(e.target.parentElement.parentElement.parentElement.dataset.id, 10)});
     }
 
     editModeOff(e) {
@@ -78,8 +86,8 @@ class App extends Component {
     updatePerson(e) {
         e.preventDefault();
         let id = this.state.editedItemId, 
-            nameInput = e.target.parentElement.firstChild,
-            ageInput = e.target.parentElement.firstChild.nextSibling;
+            nameInput = e.target.parentElement.parentElement.firstChild.firstChild,
+            ageInput = e.target.parentElement.parentElement.firstChild.nextSibling.firstChild;
         let newData = {
             name: nameInput.value,
             age: ageInput.value
@@ -120,16 +128,12 @@ class App extends Component {
 
     render(){
         return (
-            <div>
+            <Grid>
                 <Header />
                 <DataController editModeOff={this.editModeOff} submitEditHandler={this.updatePerson} editMode={this.state.editMode}/>
-                <DataDisplayer updateData={this.updateData} editModeOn={this.editModeOn} personsData={this.state.persons}/>
-                <div className="row">
-                    <button className="sortBtn" onClick={this.sortPersonsByAge}>Sort Age</button>
-                    <button className="sortBtn" onClick={this.sortPersonsByName}>Sort Name</button>
-                    <button className="sortBtn" onClick={this.updateData}>Update</button>    
-                </div>
-            </div>
+                <DataDisplayer editMode={this.state.editMode} updateData={this.updateData} editModeOn={this.editModeOn} personsData={this.state.persons}/>
+                <DisplayController sortPersonsByAge={this.sortPersonsByAge} sortPersonsByName={this.sortPersonsByName} updateData={this.updateData}/>
+            </Grid>
         )
     }
 }
