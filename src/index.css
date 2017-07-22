@@ -14,11 +14,20 @@ button {
     float: right;
 }
 
+.displayedData [class^=col]:first-child {
+    padding-left: 0;
+}
+
+.displayedData [class^=col]:last-child {
+    padding-right: 0;
+}
+
 .displayController {
     margin-bottom: 10px;
 }
 
 form button {
+    height: 34px;
     margin: 10px 0 10px 0;
 }
 
@@ -31,3 +40,8 @@ input {
 .btn-group {
     margin: 0 auto;
 }
+
+h1 {
+    text-align: center;
+}
+

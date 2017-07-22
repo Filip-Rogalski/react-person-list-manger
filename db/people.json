@@ -1,19 +1,14 @@
 {
   "people": [
     {
-      "name": "Krystyna Bąk",
-      "age": "53",
-      "id": 6
+      "name": "Jaro Kłys",
+      "age": "44",
+      "id": 9
     },
     {
-      "name": "Honorata Pieniążek",
-      "age": "34",
-      "id": 7
-    },
-    {
-      "name": "Franek Kimono",
+      "name": "Eleni",
       "age": "33",
-      "id": 8
+      "id": 14
     }
   ]
 }

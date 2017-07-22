@@ -86,8 +86,8 @@ class App extends Component {
     updatePerson(e) {
         e.preventDefault();
         let id = this.state.editedItemId, 
-            nameInput = e.target.parentElement.parentElement.firstChild.firstChild,
-            ageInput = e.target.parentElement.parentElement.firstChild.nextSibling.firstChild;
+            nameInput = e.target.parentElement.parentElement.firstChild.firstChild.firstChild,
+            ageInput = e.target.parentElement.parentElement.firstChild.nextSibling.firstChild.firstChild;
         let newData = {
             name: nameInput.value,
             age: ageInput.value
