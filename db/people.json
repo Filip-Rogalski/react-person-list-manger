@@ -1,14 +1,19 @@
 {
   "people": [
     {
-      "name": "Jaro Kłys",
-      "age": "44",
-      "id": 9
+      "name": "Helena K.",
+      "age": "22",
+      "id": 14
     },
     {
-      "name": "Eleni",
+      "name": "Jaromir Motylkowski",
       "age": "33",
-      "id": 14
+      "id": 15
+    },
+    {
+      "name": "Krzesimir Piątek",
+      "age": "44",
+      "id": 16
     }
   ]
 }

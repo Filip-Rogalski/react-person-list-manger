@@ -45,7 +45,8 @@ class App extends Component {
         this.clearInputs = this.clearInputs.bind(this);
         this.sortPersonsByAge = this.sortPersonsByAge.bind(this);
         this.sortPersonsByName = this.sortPersonsByName.bind(this);
-        this.state = {persons: [], newPersonsName: '', newPersonsAge: '', editMode: 'false', editedItemId: '', sorting: 'id'};
+        this.handleNameChange = this.handleNameChange.bind(this);
+        this.state = {persons: [], newPersonsName: '', newPersonsAge: '', editMode: 'false', editedItemId: '', updatedPersonsName: 'buła', updatedPersonsAge: '', sorting: 'id'};
     }
 
     /* Fetch data from dbase */
@@ -76,11 +77,17 @@ class App extends Component {
     }
     
     editModeOn(e) {
-        this.setState({editMode: 'true', editedItemId: parseInt(e.target.parentElement.parentElement.parentElement.dataset.id, 10)});
+        this.setState({editMode: 'true', editedItemId: parseInt(e.target.parentElement.parentElement.parentElement.dataset.id, 10), updatedPersonsName: e.target.parentElement.parentElement.parentElement.dataset.name, updatedPersonsAge: e.target.parentElement.parentElement.parentElement.dataset.age});
     }
 
+    handleNameChange(e) {
+        this.setState({updatedPersonsName: e.target.value});
+    }
+    
+    
+    
     editModeOff(e) {
-        this.setState({editMode: 'false', editedItemId: ''})
+//        this.setState({editMode: 'false', editedItemId: '', updatedPersonsName: '', updatedPersonsAge: ''})
     }
     
     updatePerson(e) {
@@ -101,7 +108,7 @@ class App extends Component {
         }).then(
             this.clearInputs(nameInput, ageInput)
         );
-        this.setState({editMode: 'false'});
+        this.setState({editMode: 'false', editedItemId: '', updatedPersonsName: '', updatedPersonsAge: ''});
     }
     
     sortPersonsByAge(e) {
@@ -130,7 +137,7 @@ class App extends Component {
         return (
             <Grid>
                 <Header />
-                <DataController editModeOff={this.editModeOff} submitEditHandler={this.updatePerson} editMode={this.state.editMode}/>
+                <DataController updatedPersonsName={this.state.updatedPersonsName} updatedPersonsAge={this.state.updatedPersonsAge} submitEditHandler={this.updatePerson} editMode={this.state.editMode}/>
                 <DataDisplayer editMode={this.state.editMode} updateData={this.updateData} editModeOn={this.editModeOn} personsData={this.state.persons}/>
                 <DisplayController sortPersonsByAge={this.sortPersonsByAge} sortPersonsByName={this.sortPersonsByName} updateData={this.updateData}/>
             </Grid>

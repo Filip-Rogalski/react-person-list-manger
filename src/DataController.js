@@ -31,18 +31,28 @@ class DataController extends Component {
                 <form>
                     <Col xs={12} md={5}>
                         <FormGroup>
+                            {this.props.editMode === 'false' ?
                             <FormControl
                                 type="text"
                                 placeholder="Enter name (first last)"
-                            />
+                            /> :
+                            <FormControl
+                                type="text"
+                                placeholder = {this.props.updatedPersonsName}
+                            />}
                         </FormGroup>
                     </Col>
                     <Col xs={9} md={5}>
                         <FormGroup>
+                            {this.props.editMode === 'false' ?
                             <FormControl
                                 type="text"
                                 placeholder="Enter age"
-                            />
+                            /> :
+                            <FormControl
+                                type="text"
+                                placeholder = {this.props.updatedPersonsAge}
+                            />}
                         </FormGroup>
                     </Col>
                     <Col xs={3} md={2}>
