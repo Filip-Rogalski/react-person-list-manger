@@ -1,24 +1,24 @@
 {
   "people": [
     {
-      "name": "Helena K.",
-      "age": "22",
-      "id": 14
+      "name": "Jan Nowak",
+      "age": "21",
+      "id": 1
     },
     {
-      "name": "Jaromir Motylkowski",
-      "age": "33",
-      "id": 15
+      "name": "Barbara Pieniążek",
+      "age": "19",
+      "id": 3
     },
     {
-      "name": "Krzesimir Piątek",
+      "name": "Honoratka W.",
       "age": "44",
-      "id": 16
+      "id": 5
     },
     {
-      "name": "Kora J.",
-      "age": "66",
-      "id": 17
+      "name": "Krzysztof Bajka",
+      "age": "52",
+      "id": 6
     }
   ]
 }

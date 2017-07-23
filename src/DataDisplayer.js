@@ -13,20 +13,19 @@ class DataDisplayer extends Component {
             method: 'DELETE'
         });
     }
-    
+        
     render(){
         return (
             <div className="displayedData">
                 {this.props.personsData.map(item => (
                     <Row key={item.id} data-id={item.id} data-age={item.age} data-name={item.name}>
-                        <Col xs={7} md={10}>
-                            <span>{item.name},</span>
-                            <span> Age: {item.age}</span>
+                        <Col xs={8} md={10}>
+                            <span>{item.name}, Age: {item.age}</span>
                         </Col>
-                        <Col xs={5} md={2}>
+                        <Col xs={4} md={2}>
                             <ButtonGroup bsStyle="default" bsSize="xsmall">
-                                <Button bsStyle="default" onClick={this.deletePerson} disabled={!this.props.editMode}>Delete</Button>
-                                <Button onClick={this.props.editModeOn}>Edit</Button>
+                                <Button bsStyle="default" onClick={this.deletePerson} disabled={this.props.editMode}>Delete</Button>
+                                <Button onClick={this.props.editModeToggler}>Edit</Button>
                             </ButtonGroup>
                         </Col>
                     </Row>

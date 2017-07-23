@@ -31,7 +31,7 @@ class DataController extends Component {
                 <form>
                     <Col xs={12} md={5}>
                         <FormGroup>
-                            {this.props.editMode === 'false' ?
+                            {this.props.editMode === false ?
                             <FormControl
                                 type="text"
                                 placeholder="Enter name (first last)"
@@ -43,8 +43,8 @@ class DataController extends Component {
                         </FormGroup>
                     </Col>
                     <Col xs={9} md={5}>
-                        <FormGroup>
-                            {this.props.editMode === 'false' ?
+                        <FormGroup disabled={this.props.editMode}>
+                            {this.props.editMode === false ?
                             <FormControl
                                 type="text"
                                 placeholder="Enter age"
@@ -56,7 +56,7 @@ class DataController extends Component {
                         </FormGroup>
                     </Col>
                     <Col xs={3} md={2}>
-                        {this.props.editMode === 'false' ? (<Button bsStyle="default" bsSize="sm" onClick={this.addPerson} block>Add</Button>) : (<Button bsStyle="default" bsSize="small" onClick={this.props.submitEditHandler}>Confirm</Button>)}
+                        {this.props.editMode === false ? (<Button bsStyle="default" bsSize="sm" onClick={this.addPerson} block>Add</Button>) : (<Button bsStyle="default" bsSize="sm" block onClick={this.props.submitEditHandler}>Confirm</Button>)}
                     </Col>
                 </form>
             </Row>
