@@ -16,10 +16,12 @@ To do this, go to the `/db` directory, and run:
 
 The server will serve the json file on `localhost:3000`.
 
+(You can change the port by launching server with `json-server -p 4000 people.json`)
+
 Next open a new Terminal window and go to the project directory and run:
 
 `npm start`
 
-The project will try to serve on `localhost:3000`, which is already taken, so it will ask you if you want it to serve on another port. Type `'Y'`. The project will run on `localhost:3001`
+The project will run on `localhost:3001` (you can change its port in package.json file)
 
 Open your favorite browser and go to `localhost:3001`.
